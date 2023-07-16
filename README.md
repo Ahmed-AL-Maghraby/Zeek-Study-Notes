@@ -10,7 +10,7 @@ That being said Bro can also be used for network troubleshooting and various mea
 By deploying Bro, blue teams can immediately access a variety of log files that contain all kinds of network activity, at a high level. More specifically, those logs contain not only detailed records of every connection on the wire but also application-layer transcripts (for example - DNS requests and the respective replies, whole HTTP sessions, etc.). Bro does a lot more than just keeping track of the aforementioned.
 It is also shipped with a whole range of analysis and detection capabilities/functions. 
 
-# Basic Commands
+## Basic Commands
 
 + Print Version - start - stop
   ```CSS
@@ -19,9 +19,18 @@ It is also shipped with a whole range of analysis and detection capabilities/fun
   zeekctl start 
   zeekctl stop
   ```
+### Analysis Pcap Files
+```css
+ zeek -C -r test.pcap
+```
++ -C :  Ignoring checksum errors
++ -r :  Reading option
++ -s : Use signature file. 
 
-
-
+### Cut column from result
+```css
+ cat dhcp.log | zeek-cut host_name
+```
 
 
 
