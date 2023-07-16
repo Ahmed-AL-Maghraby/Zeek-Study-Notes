@@ -150,14 +150,61 @@ signature ftp-brute {
 - /opt/zeek/share/zeek/policy
 - /opt/zeek/share/zeek/site/local.zeek
 
+## Extract DHCP hostnames
 
-=> Extract DHCP hostnames.
 ```zeek
 event dhcp_message (c: connection, is_orig: bool, msg: DHCP::Msg, options: DHCP::Options)
 {
 print options$host_name;
 }
 ```
+
+## zeek 101
+
+```zeek
+event zeek_init()
+    {
+     print ("Started Zeek!");
+    }
+event zeek_done()
+    {
+    print ("Stopped Zeek!");
+    }
+```
+\# zeek_init: Do actions once Zeek starts its process <br />
+\# zeek_done: Do activities once Zeek finishes its process <br />
+\# print: Prompt a message on the terminal <br />
+
+
+
+
+
+## Zeek 102
+
+```zeek
+event new_connection(c: connection)
+{
+	print c;
+}
+```
+
+
+```zeek
+event new_connection(c: connection)
+{
+	print ("###########################################################");
+	print ("");
+	print ("New Connection Found!");
+	print ("");
+	print fmt ("Source Host: %s # %s --->", c$id$orig_h, c$id$orig_p);
+	print fmt ("Destination Host: resp: %s # %s <---", c$id$resp_h, c$id$resp_p);
+	print ("");
+}
+```
+\# %s: Identifies string output for the source <br />
+\# c$id: Source reference field for the identifier <br />
+
+
 
 
 
