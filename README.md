@@ -12,15 +12,16 @@ It is also shipped with a whole range of analysis and detection capabilities/fun
 
 # Basic Commands
 
-+ Print Version
-```CSS
-zeek -v
-```
++ Print Version - start - stop
+  ```CSS
+  zeek -v
+  zeekctl status
+  zeekctl start 
+  zeekctl stop
+  ```
 
 
-- zeekctl status
-- zeekctl start 
-- zeekctl stop
+
 
 
 
